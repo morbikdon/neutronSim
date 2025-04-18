@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.16)
 project(neutronSim)
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 set(Geant4_DIR "/Users/berare/BL4S_Geant4/Geant4_buildFromSource_4.11.0/geant4-v11.0.0-install/lib/Geant4-11.0.0")
 
 #----------------------------------------------------------------------------
