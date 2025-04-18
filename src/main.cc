@@ -3,11 +3,15 @@
 #include "G4VisExecutive.hh"
 #include "G4UImanager.hh"
 #include "G4PhysListFactory.hh"
-#include "globals.hh"
 
 #include "DetectorConstruction.hh"
 #include "ActionInitialization.hh"
 
+#include "neutronGlobals.hh"
+
+#ifndef NEUTRONGLOBALS_HH
+#error "neutronGlobals.hh is not included!"
+#endif
 
 int main(int argc, char** argv) {
     G4UIExecutive* ui = nullptr;
@@ -38,7 +42,8 @@ int main(int argc, char** argv) {
         ui->SessionStart();
         delete ui;
     }
-    G4cout << ">>> Total number of neutrons produced: " << neutronCount.load() << G4endl;
+    G4cout << ">>> Total number of neutrons produced: " << neutronCountTotal.load() << G4endl;
+    G4cout << ">>> Total number of neutrons that was able to excape from the target: " << neutronCount.load() << G4endl;
 
 
     delete visManager;

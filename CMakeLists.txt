@@ -29,7 +29,7 @@ set(SOURCES
     src/ActionInitialization.cc
     src/RunAction.cc
     src/SteppingAction.cc
-    src/globals.cc
+    src/neutronGlobals.cc
 )
 
 set(HEADERS
@@ -38,7 +38,7 @@ set(HEADERS
     include/ActionInitialization.hh
     include/RunAction.hh
     include/SteppingAction.hh
-    include/globals.hh
+    include/neutronGlobals.hh
 )
 
 # ------------------------------------------------------------------------------
