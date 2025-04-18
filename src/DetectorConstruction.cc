@@ -21,7 +21,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct() {
     auto logicWorld = new G4LogicalVolume(solidWorld, air, "World");
     auto physWorld = new G4PVPlacement(nullptr, {}, logicWorld, "World", nullptr, false, 0);
 
-    auto solidTarget = new G4Tubs("Target", 0., 15.*cm, 30.*cm, 0., 360.*deg);
+    auto solidTarget = new G4Tubs("Target", 0., 7.5*cm, 30.*cm, 0., 360.*deg);
     auto logicTarget = new G4LogicalVolume(solidTarget, tungsten, "Target");
     G4VisAttributes* targetVisAttr = new G4VisAttributes(G4Colour(1.0, 0.0, 0.0)); // red
     targetVisAttr->SetVisibility(true);
