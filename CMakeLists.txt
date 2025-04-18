@@ -3,27 +3,49 @@ project(neutronSim)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_VERBOSE_MAKEFILE ON)
 
+# Geant4 install path
 set(Geant4_DIR "/Users/berare/BL4S_Geant4/Geant4_buildFromSource_4.11.0/geant4-v11.0.0-install/lib/Geant4-11.0.0")
 
-#----------------------------------------------------------------------------
-# Find Geant4 package, activating all available UI and Vis drivers by default
-# You can set WITH_GEANT4_UIVIS to OFF via the command line or ccmake/cmake-gui
-# to build a batch mode only executable
-#
-option(WITH_GEANT4_UIVIS "Build example with Geant4 UI and Vis drivers" ON)
+# UI/Visualization drivers
+option(WITH_GEANT4_UIVIS "Build with UI and Vis drivers" ON)
 if(WITH_GEANT4_UIVIS)
-  find_package(Geant4 REQUIRED ui_all vis_all)
+    find_package(Geant4 REQUIRED ui_all vis_all)
 else()
-  find_package(Geant4 REQUIRED)
+    find_package(Geant4 REQUIRED)
 endif()
 
+include(${Geant4_USE_FILE})
 
-add_definitions(-DG4UI_USE -DG4VIS_USE)
+# ------------------------------------------------------------------------------
+# Source and header files
+# ------------------------------------------------------------------------------
 
-file(GLOB SOURCES "src/*.cc")
+set(SOURCES
+    src/main.cc
+    src/DetectorConstruction.cc
+    src/PrimaryGeneratorAction.cc
+    src/ActionInitialization.cc
+    src/RunAction.cc
+    src/SteppingAction.cc
+    src/globals.cc
+)
 
-add_executable(neutronSim ${SOURCES})
+set(HEADERS
+    include/DetectorConstruction.hh
+    include/PrimaryGeneratorAction.hh
+    include/ActionInitialization.hh
+    include/RunAction.hh
+    include/SteppingAction.hh
+    include/globals.hh
+)
+
+# ------------------------------------------------------------------------------
+# Executable and linking
+# ------------------------------------------------------------------------------
+
+add_executable(neutronSim ${SOURCES} ${HEADERS})
 
 target_include_directories(neutronSim PUBLIC
     ${Geant4_INCLUDE_DIRS}
