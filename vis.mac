@@ -1,0 +1,28 @@
+# Open OpenGL viewer
+/vis/open OGL
+
+# Camera & rendering
+/vis/viewer/set/viewpointThetaPhi 90 0
+/vis/viewer/set/style surface
+/vis/viewer/set/lineSegmentsPerCircle 100
+/vis/viewer/set/autoRefresh true
+
+# Draw geometry
+/vis/drawVolume
+
+# Add trajectories
+/vis/scene/add/trajectories
+
+# Trajectory color mapping by particle type
+/vis/modeling/trajectories/create/drawByParticleID
+/vis/modeling/trajectories/drawByParticleID-0/set proton green
+/vis/modeling/trajectories/drawByParticleID-0/set neutron blue
+/vis/modeling/trajectories/drawByParticleID-0/default white
+/vis/scene/add/hits
+
+# Flush viewer
+/vis/viewer/flush
+
+# Run
+/run/initialize
+/run/beamOn 1000
