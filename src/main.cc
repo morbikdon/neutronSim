@@ -3,12 +3,11 @@
 #include "G4VisExecutive.hh"
 #include "G4UImanager.hh"
 #include "G4PhysListFactory.hh"
+#include "globals.hh"
 
 #include "DetectorConstruction.hh"
 #include "ActionInitialization.hh"
 
-// ✅ Add this
-#include "globals.hh"
 
 int main(int argc, char** argv) {
     G4UIExecutive* ui = nullptr;

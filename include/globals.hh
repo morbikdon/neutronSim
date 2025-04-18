@@ -3,6 +3,7 @@
 
 #include <atomic>
 
+// Declare the global neutron counter
 extern std::atomic<int> neutronCount;
 
 #endif
